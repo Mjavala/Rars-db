@@ -1,0 +1,24 @@
+CREATE TABLE boxes (
+  ID SERIAL NOT NULL PRIMARY KEY,
+  Name TEXT NOT NULL UNIQUE,
+  Stored BOOL DEFAULT FALSE
+);
+
+CREATE TABLE slots (
+  ID SERIAL NOT NULL PRIMARY KEY,
+  Slot TEXT NOT NULL UNIQUE,
+  filled BOOL DEFAULT FALSE
+);
+
+CREATE TABLE films (
+  ID SERIAL NOT NULL PRIMARY KEY,
+  slot TEXT,
+  box TEXT,
+  Stored BOOL DEFAULT FALSE,
+  CONSTRAINT slot_constraint
+    FOREIGN KEY (slot)
+      REFERENCES slots(Slot),
+  CONSTRAINT box_constraint
+    FOREIGN KEY (box)
+      REFERENCES boxes(Name)
+);
