@@ -1,0 +1,24 @@
+{
+    "boxes":[
+       {
+          "box_id":"TEST_BOX_STATIC",
+          "cabinet_id":null
+       },
+       {
+          "box_id":"TEST_BOX_SOCKET",
+          "cabinet_id":null
+       }
+    ],
+    "films":[
+       {
+          "film_id":"TEST_FILM_STATIC",
+          "location":null,
+          "box_id":null
+       },
+       {
+          "film_id":"TEST_FILM_SOCKET",
+          "location":null,
+          "box_id":null
+       }
+    ]
+ }

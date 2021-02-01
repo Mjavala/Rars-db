@@ -1,23 +1,17 @@
 CREATE TABLE BOXES (
-  ID SERIAL NOT NULL PRIMARY KEY,
-  BOX_ID text NOT NULL UNIQUE,
-  CABINET_ID text UNIQUE
-);
-
-CREATE TABLE SLOTS (
-  ID SERIAL NOT NULL PRIMARY KEY,
-  SLOT text NOT NULL UNIQUE,
-  FILLED BOOL DEFAULT FALSE
+  TR_ID SERIAL NOT NULL PRIMARY KEY,    /* Table row ID */
+  TS NUMERIC, 
+  BOX_ID TEXT NOT NULL UNIQUE,          /* Need to find out string length */
+  CABINET_ID TEXT UNIQUE
 );
 
 CREATE TABLE films (
-  ID SERIAL NOT NULL PRIMARY KEY,
-  SLOT text,
-  BOX text,
-  CONSTRAINT slot_constraint
-  FOREIGN KEY (SLOT)
-  REFERENCES SLOTS (SLOT),
+  TR_ID SERIAL NOT NULL PRIMARY KEY,
+  FILM_ID TEXT,                         /* Need to find out string length */
+  TS NUMERIC,
+  LOCATION TEXT,                        /* 100 slots per box */
+  BOX_ID TEXT,
   CONSTRAINT box_constraint
-  FOREIGN KEY (BOX)
+  FOREIGN KEY (BOX_ID)
   REFERENCES BOXES (BOX_ID)
 );
