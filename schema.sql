@@ -7,7 +7,14 @@ CREATE TABLE BOXES (
 
 CREATE TABLE films (
   TR_ID SERIAL NOT NULL PRIMARY KEY,
-  FILM_ID TEXT,                         /* Need to find out string length */
+  SlideID TEXT,                         /* Need to find out string length */
+  BlockID TEXT,
+  AccessionID TEXT,
+  Stain TEXT,
+  StainOrderDate TEXT,
+  SiteLabel TEXT,
+  CaseType TEXT,
+  Year VARCHAR(4),
   TS NUMERIC,
   LOCATION TEXT,                        /* 100 slots per box */
   BOX_ID TEXT,
