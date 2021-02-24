@@ -1,11 +1,12 @@
+DROP TABLE IF EXISTS slides;
+DROP TABLE IF EXISTS BOXES;
 CREATE TABLE BOXES (
   TR_ID SERIAL NOT NULL PRIMARY KEY,    /* Table row ID */
   TS NUMERIC, 
   BOX_ID TEXT NOT NULL UNIQUE,          /* Need to find out string length */
   CABINET_ID TEXT UNIQUE
 );
-
-CREATE TABLE films (
+CREATE TABLE slides (
   TR_ID SERIAL NOT NULL PRIMARY KEY,
   SlideID TEXT,                         /* Need to find out string length */
   BlockID TEXT,

@@ -3,9 +3,9 @@
     <h1>Rars Sample UI</h1>
     <main id="main">
       <div id="object_wrappers">
-        <h3>Film Info</h3>
-        <pre id="static_film" />
-        <pre id="socket_film" />
+        <h3>slide Info</h3>
+        <pre id="static_slide" />
+        <pre id="socket_slide" />
       </div>
       <div id="object_wrappers">
         <h3>Box Info</h3>
@@ -24,8 +24,8 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      static_film_name: 'TEST_FILM_STATIC',
-      socket_film_name: 'TEST_FILM_SOCKET',
+      static_slide_name: 'TEST_slide_STATIC',
+      socket_slide_name: 'TEST_slide_SOCKET',
       static_box_name: 'TEST_BOX_STATIC',
       socket_box_name: 'TEST_BOX_SOCKET',
 
@@ -34,10 +34,10 @@ export default {
   },
   apollo: {
     $subscribe: {
-      get_film: {
-        query: gql`subscription getFilm($film: String!) {
-          films(where: {film_id: {_eq: $film}}) {
-            film_id
+      get_slide: {
+        query: gql`subscription getslide($slide: String!) {
+          slides(where: {slide_id: {_eq: $slide}}) {
+            slide_id
             box_id
             location
             ts
@@ -45,11 +45,11 @@ export default {
         }`,
         variables () {
           return {
-            film: this.socket_film_name
+            slide: this.socket_slide_name
           }
         },
         result ({data}){
-          this.addToFeed(data, 'socket_film')
+          this.addToFeed(data, 'socket_slide')
         }
       },
       get_box: {
@@ -73,27 +73,27 @@ export default {
   },
   mounted () {
     this.get_static_box(this.static_box_name)
-    this.get_static_film(this.static_film_name)
-    this.$apollo.subscribe.get_film
+    this.get_static_slide(this.static_slide_name)
+    this.$apollo.subscribe.get_slide
   },
   methods: {
-    get_static_film(film) {
+    get_static_slide(slide) {
       this.$apollo.query({
-        query: gql`query getFilm($film: String!) {
-          films(where: {film_id: {_eq: $film}}) {
-            film_id
+        query: gql`query getslide($slide: String!) {
+          slides(where: {slide_id: {_eq: $slide}}) {
+            slide_id
             box_id
             location
             ts
           }
         }`,
         variables: {
-          film
+          slide
         }
       }).then((response) => {
         console.log(response)
-        this.data = response.data.films[0]
-        this.addToFeed(this.data, 'static_film')
+        this.data = response.data.slides[0]
+        this.addToFeed(this.data, 'static_slide')
       })
     },
     get_static_box(box) {

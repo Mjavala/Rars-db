@@ -12,11 +12,11 @@ Test data is provided in the ``test_data.json`` file which can be uploaded in th
 ### Adding Data and Mocking Subscriptions
 To add test data to the database run ``setup_py``.
 
-You can then simulate the film/box events by running ``sim.py``.
+You can then simulate the slide/box events by running ``sim.py``.
 
 The simulation currently handles storage as three events.
 - The staging area
-- Boxed film
+- Boxed slide
 - Box stored
 
 Retrieval is the same, but in the opposite order.
@@ -26,25 +26,25 @@ On the home page of the Hasura console you'll find the exposed endpoint and grap
 
 These queries can all be found in the ``sample_ui`` folder under the ``HelloWorld.vue`` component.
 
-### film infomation
+### slide infomation
 ```
-    get_static_film(film) {
+    get_static_slide(slide) {
       this.$apollo.query({
-        query: gql`query getFilm($film: String!) {
-          films(where: {film_id: {_eq: $film}}) {
-            film_id
+        query: gql`query getslide($slide: String!) {
+          slides(where: {slide_id: {_eq: $slide}}) {
+            slide_id
             box_id
             location
             ts
           }
         }`,
         variables: {
-          film
+          slide
         }
       }).then((response) => {
         console.log(response)
-        this.data = response.data.films[0]
-        this.addToFeed(this.data, 'static_film')
+        this.data = response.data.slides[0]
+        this.addToFeed(this.data, 'static_slide')
       })
     },
 ```
@@ -70,12 +70,12 @@ These queries can all be found in the ``sample_ui`` folder under the ``HelloWorl
     },
 ```
 
-### film subscription
+### slide subscription
 ```
-      get_film: {
-        query: gql`subscription getFilm($film: String!) {
-          films(where: {film_id: {_eq: $film}}) {
-            film_id
+      get_slide: {
+        query: gql`subscription getslide($slide: String!) {
+          slides(where: {slide_id: {_eq: $slide}}) {
+            slide_id
             box_id
             location
             ts
@@ -83,11 +83,11 @@ These queries can all be found in the ``sample_ui`` folder under the ``HelloWorl
         }`,
         variables () {
           return {
-            film: this.socket_film_name
+            slide: this.socket_slide_name
           }
         },
         result ({data}){
-          this.addToFeed(data, 'socket_film')
+          this.addToFeed(data, 'socket_slide')
         }
       },
 ```
