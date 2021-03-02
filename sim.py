@@ -35,12 +35,12 @@ class Node():
         with self.db() as (connection, cursor):
             try:
                 if type == 'staged':
-                    query = "UPDATE slides set location = %s, ts = %s where slide_id = %s"
+                    query = "UPDATE slides set location = %s, ts = %s where SlideId = %s"
                     cursor.execute(query, ('staging', time.time(), self.slide))    # If the slide is not in a box, it is in the staging area. 
                     print('Simulation: slide in staging area...')              # It has either not been stored or has been retrieved.
                 
                 elif type == 'boxed':
-                    query = "UPDATE slides set location = %s, box_id = %s, ts = %s where slide_id = %s" # TODO: Define location type for real system.
+                    query = "UPDATE slides set location = %s, box_id = %s, ts = %s where SlideId = %s" # TODO: Define location type for real system.
                     # Box holds 100 slides, this next function generates a random location
                     location = self.gen_loc(self.box)
                     cursor.execute(query, (location, self.box, time.time(), self.slide))

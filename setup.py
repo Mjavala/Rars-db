@@ -8,7 +8,7 @@ def add_slide(data):
     db = db_conn()
     cursor = db.cursor()
 
-    # uid = data['slide_id']
+    # uid = data['SlideId']
     strSlideID = data['slideid']
     strBlockID = data['blockid']
     strAccID = data['accessionid']
@@ -21,7 +21,7 @@ def add_slide(data):
     box = data['box_id']
     timestamp = time.time()
 
-    # query = "INSERT INTO slides (slide_id, location, box_id, ts) VALUES (%s, %s, %s, %s)"
+    # query = "INSERT INTO slides (SlideId, location, box_id, ts) VALUES (%s, %s, %s, %s)"
     query = """INSERT INTO public.slides(
 	slideid, blockid, accessionid, stain, stainorderdate, sitelabel, casetype, year, location, box_id, ts)
 	VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"""

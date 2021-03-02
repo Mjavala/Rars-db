@@ -31,8 +31,8 @@ These queries can all be found in the ``sample_ui`` folder under the ``HelloWorl
     get_static_slide(slide) {
       this.$apollo.query({
         query: gql`query getslide($slide: String!) {
-          slides(where: {slide_id: {_eq: $slide}}) {
-            slide_id
+          slides(where: {SlideId: {_eq: $slide}}) {
+            SlideId
             box_id
             location
             ts
@@ -74,8 +74,8 @@ These queries can all be found in the ``sample_ui`` folder under the ``HelloWorl
 ```
       get_slide: {
         query: gql`subscription getslide($slide: String!) {
-          slides(where: {slide_id: {_eq: $slide}}) {
-            slide_id
+          slides(where: {SlideId: {_eq: $slide}}) {
+            SlideId
             box_id
             location
             ts

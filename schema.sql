@@ -7,17 +7,19 @@ CREATE TABLE BOXES (
   CABINET_ID TEXT UNIQUE
 );
 CREATE TABLE slides (
-  TR_ID SERIAL NOT NULL PRIMARY KEY,
-  SlideID TEXT,                         /* Need to find out string length */
+  SlideID TEXT NOT NULL PRIMARY KEY,                         /* Need to find out string length */
   BlockID TEXT,
   AccessionID TEXT,
   Stain TEXT,
-  StainOrderDate TEXT,
+  StainOrderDate TIMESTAMP,
   SiteLabel TEXT,
   CaseType TEXT,
   Year VARCHAR(4),
   TS NUMERIC,
-  LOCATION TEXT,                        /* 100 slots per box */
+  LOCATION TEXT,
+  RetrievalRequest BOOLEAN,
+  RequestedBy  TEXT,
+  RequestTS Numeric,                        /* 100 slots per box */
   BOX_ID TEXT,
   CONSTRAINT box_constraint
   FOREIGN KEY (BOX_ID)
