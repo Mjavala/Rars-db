@@ -1,0 +1,26 @@
+{
+    "boxes":[
+       {
+          "box_id":"Box1",
+          "cabinet_id":null
+       },
+       {
+          "box_id":"Box2",
+          "cabinet_id":null
+       }
+    ],
+    "slides":[
+       {
+         "slideid" : "B18-107_A_1.4.1",
+         "blockid" : "B18-107_A_1",
+         "accessionid" : "B18-107",
+         "stain" : "cox81",
+         "sitelabel" : "MAWD",
+         "stainorderdate" : "2019-06-10 11:27:05",
+         "casetype" : "B",
+         "year" : "18",
+         "location" :null,
+         "box_id" : "Box1"
+      }
+    ]
+ }

@@ -2,21 +2,34 @@ import json
 import time
 import psycopg2
 
-def add_film(data):
-    # init data ~ Film ID, Box ID(null), Cabinet (null), Timestamp
-    # if box == null & cabinet == null then the film is being staged for storage or has been retrived by an operator
+def add_slide(data):
+    # init data ~ slide ID, Box ID(null), Cabinet (null), Timestamp
+    # if box == null & cabinet == null then the slide is being staged for storage or has been retrived by an operator
     db = db_conn()
     cursor = db.cursor()
 
-    uid = data['film_id']
+    # uid = data['SlideId']
+    strSlideID = data['slideid']
+    strBlockID = data['blockid']
+    strAccID = data['accessionid']
+    strStain = data['stain']
+    strStainOrderDate = data['stainorderdate']
+    strSiteLabel = data['sitelabel']
+    strCaseType = data['casetype']
+    strYear = data['year']
     location = data['location']
     box = data['box_id']
     timestamp = time.time()
 
-    query = "INSERT INTO films (film_id, location, box_id, ts) VALUES (%s, %s, %s, %s)"
+    # query = "INSERT INTO slides (SlideId, location, box_id, ts) VALUES (%s, %s, %s, %s)"
+    query = """INSERT INTO public.slides(
+	slideid, blockid, accessionid, stain, stainorderdate, sitelabel, casetype, year, location, box_id, ts)
+	VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"""
+
+    # print("Query:", query)
 
     try:
-        cursor.execute(query, (uid, location, box, timestamp))
+        cursor.execute(query, (strSlideID, strBlockID, strAccID, strStain, strStainOrderDate, strSiteLabel, strCaseType, strYear, location, box, timestamp))
         db.commit()
     except psycopg2.Error as error:
         print("Database error:", error)
@@ -38,7 +51,7 @@ def add_box(data):
         db.commit()
 
     except psycopg2.Error as error:
-        print("Database error:", error)
+        print("Database error:", error, query)
     except Exception as e:
         print("General Error:", e)
 
@@ -50,8 +63,12 @@ def add_initial_data(file):
         add_box(data['boxes'][0])
         add_box(data['boxes'][1])
 
-        add_film(data['films'][0])
-        add_film(data['films'][1])
+        
+        #add_slide(data['slides'][0])
+        #add_slide(data['slides'][1])
+
+        for i in range(500):
+          add_slide(data['slides'][i-1])
 
 def db_conn():
     try:
