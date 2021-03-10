@@ -61,14 +61,9 @@ def add_initial_data(file):
         data = json.load(f)
 
         add_box(data['boxes'][0])
-        add_box(data['boxes'][1])
-
         
-        #add_slide(data['slides'][0])
-        #add_slide(data['slides'][1])
-
-        for i in range(500):
-          add_slide(data['slides'][i-1])
+        for slide in data['slides']:
+            add_slide(slide)
 
 def db_conn():
     try:
@@ -78,4 +73,4 @@ def db_conn():
         print("Database error:", error) 
 
 if __name__ == '__main__':
-    add_initial_data('test_data.json')
+    add_initial_data('test_data_simulation.json')
