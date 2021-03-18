@@ -1,7 +1,7 @@
 {
     "boxes":[
         {
-           "box_id":"Box1",
+           "box_id":"box1",
            "cabinet_id":null
         }
     ],
@@ -16,7 +16,7 @@
             "casetype" : "KL",
             "year" : "20",
             "location" : 1,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "KL20-11898_A_3.3.1",
@@ -28,7 +28,7 @@
             "casetype" : "KL",
             "year" : "20",
             "location" : 2,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "LH20-3307_A_1.1.1",
@@ -40,7 +40,7 @@
             "casetype" : "LH",
             "year" : "20",
             "location" : 3,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "PL20-5708_A_3.3.1",
@@ -52,7 +52,7 @@
             "casetype" : "PL",
             "year" : "20",
             "location" : 4,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "KL20-12031_B_2.35.1",
@@ -64,7 +64,7 @@
             "casetype" : "KL",
             "year" : "20",
             "location" : 5,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "PL20-5708_I_2.26.1",
@@ -76,7 +76,7 @@
             "casetype" : "PL",
             "year" : "20",
             "location" : 6,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "PL20-5708_I_3.27.1",
@@ -88,7 +88,7 @@
             "casetype" : "PL",
             "year" : "20",
             "location" : 7,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "PL20-5708_B_3.6.1",
@@ -100,7 +100,7 @@
             "casetype" : "PL",
             "year" : "20",
             "location" : 8,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "PL20-5708_D_3.12.1",
@@ -112,7 +112,7 @@
             "casetype" : "PL",
             "year" : "20",
             "location" : 9,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "PL20-5708_C_3.9.1",
@@ -124,7 +124,7 @@
             "casetype" : "PL",
             "year" : "20",
             "location" : 10,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "PL20-5708_E_2.14.1",
@@ -136,7 +136,7 @@
             "casetype" : "PL",
             "year" : "20",
             "location" : 11,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "PL20-5708_H_2.23.1",
@@ -148,7 +148,7 @@
             "casetype" : "PL",
             "year" : "20",
             "location" : 12,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "KL20-12031_C_1.3.1",
@@ -160,7 +160,7 @@
             "casetype" : "KL",
             "year" : "20",
             "location" : 13,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "PL20-5708_E_3.15.1",
@@ -172,7 +172,7 @@
             "casetype" : "PL",
             "year" : "20",
             "location" : 14,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "PL20-5708_F_1.16.1",
@@ -184,7 +184,7 @@
             "casetype" : "PL",
             "year" : "20",
             "location" : 15,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          },
          {
             "slideid" : "KL20-12031_B_23.56.1",
@@ -196,7 +196,7 @@
             "casetype" : "KL",
             "year" : "20",
             "location" : 16,
-            "box_id" : "Box1"
+            "box_id" : "box1"
          }
     ]
 }

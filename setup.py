@@ -60,7 +60,7 @@ def add_initial_data(file):
     with open(file) as f:
         data = json.load(f)
 
-        add_box(data['boxes'][0])
+        #add_box(data['boxes'][0])
         
         for slide in data['slides']:
             add_slide(slide)
