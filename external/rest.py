@@ -3,11 +3,24 @@ import json
 
 # TODO: Define & add other query fields - ie CaseType
 # TODO: Remove flask classfull and go with bare flask or tornado
+# TODO: Return if request succesfull / slide exists
+# TODO: Multiple slides
+'''
+{
+    "requested_by":"MOD",
+    "timestampp": 1221321421412,
+    "request_type":"slideid",
+    "request":[
+        "slide1",
+        "slide2"
+    ]
+}
+'''
 
 def slide_request(slideid):
     try:
-        url = "http://127.0.0.1:9999/retrieve_slide/{}".format(slideid)
-        #myobj = {"slideid": slideid}
+        url = "https://evil-dragonfly-55.loca.lt/retrieve_slide/{}".format(slideid)
+        # myobj = {"slideid": slideid}
         res = requests.get(url)
         return res.text
 
