@@ -151,7 +151,7 @@ export default {
       this.$apollo.mutate({
         mutation: gql`mutation UpdateRetrievalRequest($slide: String!, $strRequestedBy: String!) {
           update_slides_by_pk(
-          pk_columns: {slideid: $slide}, 
+          pk_columns: {slideid: $slide},
           _set: {retrievalrequest: true, requestedby: $strRequestedBy, requestts: 12345})
           {
           slideid

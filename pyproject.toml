@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "rars-db"
+version = "0.1.0"
+description = "Rars Database API & postgres docker instace"
+authors = ["Mjavala <mjabravo221@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+Flask = "^2.0.1"
+psycopg2-binary = "^2.9.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+pytest-cov = "^2.12.1"
+pre-commit = "^2.13.0"
+flake8 = "^3.9.2"
+isort = "^5.8.0"
+pytest-flask = "^1.2.0"
+black = {version = "^21.6b0", allow-prereleases = true}
+
+[tool.black]
+line-length = 79
+target-version = ['py37']
+include = '\.pyi?$'
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+  | foo.py           # also separately exclude a file named foo.py in
+                     # the root of the project
+)
+'''
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 79
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
