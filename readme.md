@@ -5,11 +5,12 @@ Then, you can visit the hasura console at ``localhost:8080``. Check the compose 
 \
 To set up the empty database with the current schema, run the setup file with:\
 \
-```poetry run python setup.py```\
+```poetry run python setup.py```
 
 You can modify this file to insert any of the test data json files. At this point you'll have a set up for testing.
 
 ### API Endpoints
+This section is under development.
 - **get_slide** (POST)
 ```
 request:

@@ -1,4 +1,3 @@
-import json
 import requests
 
 url = "http://10.0.0.238:8888"
@@ -19,6 +18,7 @@ get_slide_data = {
     "requestts": None,
     "box_id": "Box1",
 }
+
 
 def test_get_slide():
     get_slide_url = url + "/get_slide"
