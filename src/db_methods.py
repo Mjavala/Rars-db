@@ -22,51 +22,23 @@ class node:
     @contextmanager
     def db(self):
         con = self.conn.getconn()
-        cur = con.cursor()
+        cur = con.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
         try:
             yield con, cur
         finally:
             cur.close()
             self.conn.putconn(con)
 
-    def create_films(self, films):
-        payload = self.unpack_films(films)
-        sql = "INSERT INTO films (id) VALUES %s RETURNING id"
-        with self.db() as (connection, cursor):
-            try:
-                # Initially a film is not in a slot
-                # TODO: Add film pos
-                extras.execute_values(cursor, sql, payload)
-
-                connection.commit()
-
-                return films
-
-            except psycopg2.Error as error:
-                print("Database error:", error)
-            except Exception as e:
-                print("General error:", e)
-
-    # helper function
-    # unpack list of film ids from object
-    def unpack_films(self, data):
-        payload = []
-        for i in data:
-            id = list(data[i][0:6])
-            id = "".join(map(str, id))
-            payload.append((id,))
-
-        return payload
-
-    def update_film(self, data):
-        print("update film data: {}".format(data))
+    def update_slide(self, data):
+        print("update slide data: {}".format(data))
         sql = "UPDATE slides set location = %s where slideid = %s"
         slot = data["slot"]
         # box = data["box"]
-        film = data["film"]
+        """ needs to be updated """
+        slide = data["slide"]
         with self.db() as (connection, cursor):
             try:
-                cursor.execute(sql, (slot, film))
+                cursor.execute(sql, (slot, slide))
                 # id = cursor.fetchone()[0]
 
                 rowcount = cursor.rowcount
@@ -74,8 +46,6 @@ class node:
                     connection.commit()
                 else:
                     connection.rollback()
-
-                # new_film = {"id": id, "target": target}
 
                 return slot
             except psycopg2.Error as error:
@@ -105,50 +75,23 @@ class node:
             except Exception as e:
                 print("General Error:", e)
 
-    # TODO: Fix to add stored
-    def update_box(self, update):
+    def get_slide(self, slide):
+        print("get slide request...{}".format(slide))
+        sql = "SELECT * from slides WHERE slideid = %s"
         with self.db() as (connection, cursor):
             try:
-                cursor.execute(
-                    "Update boxes set name = %s RETURNING id", (update,)
-                )
-                id = cursor.fetchone()[0]
-
-                rowcount = cursor.rowcount
-                if rowcount == 1:
-                    connection.commit()
-                else:
-                    connection.rollback()
-
-                new_box = {"id": id, "target": update}
-                return new_box
-            except psycopg2.Error as error:
-                print("Database error:", error)
-            except Exception as e:
-                print("General Error:", e)
-
-    def get_box(self):
-        pass
-
-    def get_film(self, film):
-        print("get film request...{}".format(film))
-        sql = "SELECT location from slides WHERE slideid = %s"
-        with self.db() as (connection, cursor):
-            try:
-                cursor.execute(sql, (film,))
+                cursor.execute(sql, (slide,))
 
                 connection.commit()
 
                 data = cursor.fetchone()
-
-                return data[0]
+                return json.dumps(dict(data), default=str)
             except psycopg2.Error as error:
                 print("Database error:", error)
             except Exception as e:
                 print("General Error:", print_exc(e))
 
     def create_slots(self, target_box):
-
         slots = []
         # 100 slots per box
         for j in range(1, 101):
@@ -156,9 +99,9 @@ class node:
 
             slots.append((slot_name, target_box["box_name"]))
 
-        self.create_film_slot(slots)
+        self.create_slide_slot(slots)
 
-    def create_film_slot(self, data):
+    def create_slide_slot(self, data):
         # target = "bfs_1_2"
         # target_box = "conv_1"
         with self.db() as (connection, cursor):
@@ -176,7 +119,7 @@ class node:
             except Exception as e:
                 print("General Error:", e)
 
-    def update_film_slot(self, slot):
+    def update_slide_slot(self, slot):
         print("full slot: {}".format(slot))
         full_slot = slot
         # Switches the slot filled status to opposite bool
@@ -192,7 +135,7 @@ class node:
             except Exception as e:
                 print("General Error:", e)
 
-    def read_film_slot(self, box):
+    def read_slide_slot(self, box):
         req = box["box"]
         sql = "SELECT * from slots WHERE filled = false AND box = %s LIMIT 1"
         with self.db() as (connection, cursor):
@@ -215,3 +158,4 @@ class node:
 
 if __name__ == "__main__":
     db = node()
+    db.get_slide("KL20-12031_B_2.35.1")
