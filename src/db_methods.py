@@ -1,8 +1,9 @@
-import psycopg2
-from psycopg2 import extras
 import json
 from contextlib import contextmanager
 from traceback import print_exc
+
+import psycopg2
+from psycopg2 import extras, pool  # noqa: F401
 
 
 # TODO: Config file
